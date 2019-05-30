@@ -1,0 +1,11 @@
+logs/*
+!.gitkeep
+node_modules/
+node_modules/*
+app/lib/
+compiled/
+compiled/*
+tmp
+.DS_Store
+.idea
+.env

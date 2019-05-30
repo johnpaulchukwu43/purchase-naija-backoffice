@@ -1,0 +1,142 @@
+<form name="ManufacturingUploadForm" novalidate ng-init="initController()">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <!-- Input groups -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h3 class="mb-0">Manufacturing Product Info</h3>
+                        <p style="font-size:small">Fields marked <span class="text-red">*</span> are required</p>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <!--product name-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="manufacturingName">Product Name</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control" id="manufacturingName" name="manufacturingName"
+                                               placeholder="Product name" type="text" ng-model="manufacturing.name"
+                                               ng-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--price-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="manufacturingPrice">Product Price</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">₦</span>
+                                        </div>
+                                        <input class="form-control" id="manufacturingPrice" ng-model="manufacturing.price"
+                                               name="FashionPrice" placeholder="Price" type="text" ng-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Quantity-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="FashionQuantity">Quantity</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <input class="form-control" placeholder="Quantity" id="FashionQuantity"
+                                               ng-model="manufacturing.quantity" name="FashionQuantity" type="text"
+                                               ng-required="true">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Color-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="FashionColor">Color</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <input class="form-control" placeholder="Color" id="FashionColor" type="text"
+                                               ng-model="manufacturing.color" name="FashionColor" ng-required="true">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Product describe-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="ProductDescription">Product Description</label>
+                                    <span class="text-red">*</span>
+                                    <textarea class="form-control" id="ProductDescription"
+                                              ng-model="manufacturing.description" rows="3"
+                                              ng-required="true"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end-->
+                    </div>
+                </div>
+                <!-- Text editor -->
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <!-- Tags -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h3 class="mb-0"></h3>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <!--Sub Category-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="manufacturing_category">Sub Category</label>
+                                    <select
+                                            name="manufacturing_category"
+                                            id="manufacturing_category"
+                                            ng-required="true"
+                                            class="form-control"
+                                            ng-model="manufacturing.subCategory"
+                                            ng-options="category.value as category.label for category in sub_manufacturing_categories">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <file-upload></file-upload>
+                        <!--submit-->
+                        <div class="card">
+                            <button class="btn btn-success" ng-click="createManufacturingProduct(ManufacturingUploadForm.$valid)"
+                                    ng-disabled="ManufacturingUploadForm.$invalid">Create Product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</form>

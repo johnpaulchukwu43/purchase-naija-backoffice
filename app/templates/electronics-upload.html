@@ -1,0 +1,175 @@
+<form name="ElectronicsUploadForm" novalidate ng-init="initController()">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <!-- Input groups -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h3 class="mb-0">Electronic Product Info</h3>
+                        <p style="font-size:small">Fields marked <span class="text-red">*</span> are required</p>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <!--product name-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="ElectronicName">Product Name</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control" id="ElectronicName" name="ElectronicName"
+                                               placeholder="Product name" type="text" ng-model="electronics_info.name"
+                                               ng-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--price-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="ElectronicPrice">Product Price</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">₦</span>
+                                        </div>
+                                        <input class="form-control" id="ElectronicPrice" ng-model="electronics_info.price"
+                                               name="ElectronicPrice" placeholder="Price" type="text" ng-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Quantity-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="ElectronicQuantity">Quantity</label>
+                                    <div class="input-group input-group-merge">
+                                        <input class="form-control" placeholder="Quantity" id="ElectronicQuantity"
+                                               ng-model="electronics_info.quantity" name="ElectronicQuantity" type="text"
+                                               ng-required="true">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Color-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="ElectronicColor">Color</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <input class="form-control" placeholder="Color" id="ElectronicColor" type="text"
+                                               ng-model="electronics_info.color" name="ElectronicColor" ng-required="true">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--gender-->
+
+                        <!--Product describe-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="ProductDescription">Product Description</label>
+                                    <span class="text-red">*</span>
+                                    <textarea class="form-control" id="ProductDescription"
+                                              ng-model="electronics_info.description" rows="3"
+                                              ng-required="true"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end-->
+                    </div>
+                </div>
+                <!-- Text editor -->
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <!-- Tags -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h3 class="mb-0"></h3>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <!--brand-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="brand">Product Brand</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" class="form-control" id="brand"
+                                               ng-model="electronics_info.brand"/>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--size-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="brand">Product Size</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <input type="text" class="form-control" id="size"
+                                               ng-model="electronics_info.size"/>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Sub Category-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="manufacturing_category">Sub Category</label>
+                                    <span class="text-red">*</span>
+                                    <select
+                                            name="manufacturing_category"
+                                            id="manufacturing_category"
+                                            ng-required="true"
+                                            class="form-control"
+                                            ng-model="electronics_info.subCategory"
+                                            ng-options="category.value as category.label for category in sub_beuaty_electonics">
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end-->
+                        <file-upload></file-upload>
+                        <!--submit-->
+                        <div class="card">
+                            <button class="btn btn-success" ng-click="createElectronicsProduct(ElectronicsUploadForm.$valid)"
+                                    ng-disabled="ElectronicsUploadForm.$invalid">Create Product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</form>

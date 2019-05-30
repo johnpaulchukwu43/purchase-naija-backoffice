@@ -1,0 +1,107 @@
+<form name="RawUploadForm" novalidate ng-init="initController()">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <!-- Input groups -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h3 class="mb-0">Raw Material Product Info</h3>
+                        <p style="font-size:small">Fields marked <span class="text-red">*</span> are required</p>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <!--product name-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="rawName">Product Name</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control" id="rawName" name="rawName"
+                                               placeholder="Product name" type="text" ng-model="raw_info.name"
+                                               ng-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--price-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="rawPrice">Product Price</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">₦</span>
+                                        </div>
+                                        <input class="form-control" id="rawPrice" ng-model="raw_info.price"
+                                               name="FashionPrice" placeholder="Price" type="text" ng-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Quantity-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="FashionQuantity">Quantity</label>
+                                    <span class="text-red">*</span>
+                                    <div class="input-group input-group-merge">
+                                        <input class="form-control" placeholder="Quantity" id="FashionQuantity"
+                                               ng-model="raw_info.quantity" name="FashionQuantity" type="text"
+                                               ng-required="true">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Product describe-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="ProductDescription">Product Description</label>
+                                    <span class="text-red">*</span>
+                                    <textarea class="form-control" id="ProductDescription"
+                                              ng-model="raw_info.description" rows="3"
+                                              ng-required="true"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end-->
+                    </div>
+                </div>
+                <!-- Text editor -->
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card-wrapper">
+                <!-- Tags -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h3 class="mb-0"></h3>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <file-upload></file-upload>
+                        <!--submit-->
+                        <div class="card">
+                            <button class="btn btn-success" ng-click="createRawProduct(RawUploadForm.$valid)"
+                                    ng-disabled="RawUploadForm.$invalid">Create Product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</form>

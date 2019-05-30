@@ -1,0 +1,58 @@
+<app-side-nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
+              id="sidenav-main"></app-side-nav>
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <app-nav-bar></app-nav-bar>
+    <!-- Header -->
+    <div class="header pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <app-current-state current="vm.title"></app-current-state>
+                <!-- Card stats -->
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col-8">
+                <h4>Select Category Type to Upload:</h4>
+
+                <select
+                        name="selected_category"
+                        ng-required="true"
+                        class="form-control"
+                        ng-model="selected_category"
+                        ng-change="switchViews(selected_category)"
+                        ng-options="category.value as category.label for category in categories_types">
+
+                </select>
+            </div>
+        </div>
+
+        <div ng-if="is_fashion" style="margin-top: 10px">
+            <div ng-include="'templates/fashion-upload.html'"></div>
+        </div>
+
+        <div ng-if="is_raw_materials" style="margin-top: 10px">
+            <div ng-include="'templates/raw-upload.html'"></div>
+        </div>
+
+        <div ng-if="is_manufacturing" style="margin-top: 10px">
+            <div ng-include="'templates/manufacturing-upload.html'"></div>
+        </div>
+
+        <div ng-if="is_beauty" style="margin-top: 10px">
+            <div ng-include="'templates/beauty-upload.html'"></div>
+        </div>
+
+        <div ng-if="is_electronics" style="margin-top: 10px">
+            <div ng-include="'templates/electronics-upload.html'"></div>
+        </div>
+
+    </div>
+
+</div>
+
+

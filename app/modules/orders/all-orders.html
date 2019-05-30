@@ -1,0 +1,257 @@
+<app-side-nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
+              id="sidenav-main"></app-side-nav>
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <app-nav-bar></app-nav-bar>
+    <!-- Header -->
+    <div class="header pb-6">
+        <div class="container-fluid">
+            <div class="header-body" ng-if="!views.is_view_fashion">
+                <app-current-state current="vm.title"></app-current-state>
+                <!-- Card stats -->
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <!-- Page content -->
+    <div class="container-fluid mt--6" ng-init="identifyView('VIEW_ALL_ORDERS')">
+
+        <div class="row">
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="table table-responsive">
+                        <table class="table table-striped table-advance table-hover user-list" st-pipe="doPaginate"
+                               st-table="orders">
+                            <!--<table class="table table-striped table-advance table-hover user-list">-->
+                            <thead>
+                            <tr style="color: #3498db">
+                                <th><i class="fa fa-tag"></i> ID</th>
+                                <th>Customer Name</th>
+                                <th>Order Code</th>
+                                <th>Payment Id</th>
+                                <th>Payment Type</th>
+                                <th>IsDelivered</th>
+                                <th>Date Ordered</th>
+                                <th>View Product(s) For Delivery</th>
+                                <th>Change Delivery Status</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody ng-if="!isLoading && !loadFailed && !noorders">
+
+                            <tr ng-repeat="item in orders">
+                                <td>{{item.serial_no}}</td>
+                                <td>{{item.orders[0].name}}</td>
+                                <td class="text-left">{{item.orders[0].orderCode}}</td>
+                                <td class="text-left"> {{item.orders[0].paymentID}}</td>
+                                <td class="text-left"> {{item.orders[0].paymentType}}</td>
+                                <td class="text-left">
+                                    <span class="badge" ng-style="match_status_code(item.orders[0].isDelivered).style"
+                                          ng-bind="match_status_code(item.orders[0].isDelivered).del"></span>
+                                </td>
+                                <td class="text-left" ng-bind="item.orders[0].createdAt| date"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal"
+                                            data-target="#viewMoreModal" ng-click="viewProductsForDeliveryAdmin(item.orders)">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                </td>
+                                <td class="text-left ">
+                                    <button type="button" class="btn btn-sm btn-secondary" ng-disabled="{{item.orders[0].isDelivered}}" data-toggle="modal"
+                                            data-target="#updateModal" ng-click="updateOrderDetail(item.orders[0].orderCode)">
+                                        <i class="ni ni-delivery-fast"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                            <tbody ng-if="isLoading">
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <i class="fa fa-3x fa-spinner fa-spin"></i>
+
+                                    <p>Loading...</p>
+                                </td>
+                            </tr>
+                            </tbody>
+
+                            <!--<tbody ng-if="!isLoading && loadFailed">-->
+                            <!--<tr>-->
+                            <!--<td colspan="8" style="padding: 0;">-->
+                            <!--<div class="alert alert-danger fade in text-center" style="margin: 0;">-->
+                            <!--<i class="fa fa-4x fa-warning" style="display: block;"></i>-->
+                            <!--<strong>Error!</strong> <span>{{loadError}}</span><br>-->
+                            <!--<a style="cursor:pointer;" ng-click="reload()">Try Again</a>-->
+                            <!--</div>-->
+                            <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+
+                            <!--<tbody ng-if="isEmptyRecord">-->
+                            <!--<tr>-->
+                            <!--<td colspan="9" style="padding: 0;">-->
+                            <!--<div class="alert alert-warning fade in text-center" style="margin: 0;">-->
+                            <!--<i class="fa fa-4x fa-frown-o" style="display: block;"></i>-->
+                            <!--<strong><i class="fa fa-2x fa-database"></i> No Record Match Found!</strong> <br>-->
+                            <!--</div>-->
+                            <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+
+                            <tbody ng-if="noorders">
+                            <tr>
+                                <td colspan="8" style="padding: 0;">
+                                    <div class="alert alert-secondary fade show text-center" style="margin: 0;">
+                                        <i class="fa fa-4x fa-database" style="display: block;"></i>
+                                        <strong>No Orders Currently</strong> <br>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+
+
+                            <tfoot>
+                            <tr>
+                                <td class="text-center" st-pagination="" st-items-by-page="pageSize"
+                                    colspan="{{colspan}}">
+                                </td>
+                            </tr>
+
+                            </tfoot>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-custom">
+                    <h6 class="modal-title" id="modal-title-notification">Info!!</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="py-3 text-center">
+                        <i class="ni ni-delivery-fast fa-3x"></i>
+                        <h4 class="mt-4">This is would Update Delivery status for All Products With OrderCode: <span class="heading">{{orderCode}}</span></h4>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Go back</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="updateOrderDetailAction()">Yes, Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="viewMoreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary-custom">
+                    <h5 class="modal-title" id="exampleModalLabel"> Products For Order Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" ng-if="isModalLoading">
+                            <div class="col-sm-12 text-center">
+                                <i class="fa fa-3x fa-spinner fa-spin"></i>
+                                <p>Loading...</p>
+                            </div>
+                    </div>
+
+                    <div ng-if="!isModalLoading && !modalLoadFailed">
+                        <div class="row product-order-detail" style="border-bottom: 1px solid #e9ecef">
+                            <div class="col-2">
+                                Product Image
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    Product Name
+                                </div>
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    Quantity Ordered
+                                </div>
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    Total Cost
+                                </div>
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    Product Provider
+                                </div>
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    Product Category
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-order" ng-repeat="item in product_info">
+                            <div class="row product-order-detail" style="border-bottom: 1px solid #e9ecef">
+                                <div class="col-2">
+                                    <img ng-src="{{item.info[0].imageUrls[0]}}" alt=""
+                                         class="img-fluid"/>
+                                </div>
+                                <div class="col-2 order_detail">
+                                    <div>
+                                        <h5 class="font:">{{item.info[0].name}}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2 order_detail">
+                                    <div>
+                                        <h5>{{item.quantity}}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2 order_detail">
+                                    <div>
+                                        <h5>{{item.quantity * item.info[0].price | currency:'₦' }}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2 order_detail">
+                                    <div>
+                                        <h5>{{item.provider}}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2 order_detail">
+                                    <div>
+                                        <h5>{{item.category}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="modalLoadFailed">
+                        failed
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+

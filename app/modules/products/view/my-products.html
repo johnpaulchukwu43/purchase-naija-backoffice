@@ -1,0 +1,44 @@
+<app-side-nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white"
+              id="sidenav-main"></app-side-nav>
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <app-nav-bar></app-nav-bar>
+    <!-- Header -->
+    <div class="header pb-6" >
+        <div class="container-fluid">
+            <div class="header-body" ng-if="!views.is_view_fashion" style="margin-bottom: 20px!important;margin-top: 10px!important;">
+                <!--<app-current-state current="here"></app-current-state>-->
+                <div class="" style="text-align: center;">
+                    <h2> View My Products on the System</h2>
+                </div>
+                <!-- Card stats -->
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <!-- Page content -->
+    <div class="container-fluid mt--6" ng-init="identifyView('VIEW_PRODUCTS_BY_PROVIDER')">
+        <div class="row" ng-if="noView">
+            <div class="col-8">
+                <h4>Select ProductCategory Type to View:</h4>
+
+                <select
+                        name="selected_category"
+                        ng-required="true"
+                        class="form-control"
+                        ng-model="selected_category"
+                        ng-change="switchViews(selected_category)"
+                        ng-options="category.value as category.label for category in categories_types">
+
+                </select>
+            </div>
+        </div>
+
+        <div ng-if="!noView" style="margin-top: 15px">
+            <div ng-include="'templates/product-views/index.html'"></div>
+        </div>
+    </div>
+
+</div>
+
+
