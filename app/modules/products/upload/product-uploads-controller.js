@@ -121,7 +121,9 @@
                             //if everything goes fine the model will be cleared else remains the same
                             $scope.fashion_info = exception.catcher(result);
                             $scope.resetFields($scope.fashion_info)
-                        })
+                        }).catch(err=>{
+                            console.log(JSON.stringify(err));
+                    })
                 }
             }else{
                 logger.error("Enter information for required fields");
