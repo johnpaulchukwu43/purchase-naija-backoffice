@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Purchase Naija</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="assets/css/app.css">
-  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Purchase Naija</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="assets/custom/app.css">
+    <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <!-- Favicon -->
     <!--<link rel="icon" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/img/brand/favicon.png" type="image/png">-->
     <!-- Fonts -->
@@ -17,97 +17,41 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Page plugins -->
-  <!-- Page plugins -->
-  <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/select2/dist/css/select2.min.css">
-  <link rel="stylesheet" href="assets/css/vendor/toastr.min.css">
-  <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/quill/dist/quill.core.css">
+    <!-- Page plugins -->
+    <link rel="stylesheet" href="assets/vendor/css/select2.min.css">
+    <link rel="stylesheet" href="assets/vendor/css/toastr.min.css">
+    <link rel="stylesheet" href="assets/vendor/css/quill.core.css">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/argon.min.css?v=1.0.0" type="text/css">
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NKDMSK6');</script>
-    <!-- End Google Tag Manager -->
+    <link rel="stylesheet" href="assets/vendor/css/argon.min.css" type="text/css">
 </head>
 
 
 <body ng-app="mainApp">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div ng-view=""></div>
 
 <!-- Argon Scripts -->
 <!-- Core -->
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/js-cookie/js.cookie.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/lavalamp/js/jquery.lavalamp.min.js"></script>
-<!-- Optional JS -->
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/select2/dist/js/select2.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!--<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/nouislider/distribute/nouislider.min.js"></script>-->
-<!--<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/quill/dist/quill.min.js"></script>-->
-<!--<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>-->
-<!--<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>-->
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/js-cookie/js.cookie.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/lavalamp/js/jquery.lavalamp.min.js"></script>
-
-<!-- Optional JS -->
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+<script src="assets/vendor/js/jquery.min.js"></script>
+<script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/js/cookie.js"></script>
+<script src="assets/vendor/js/jquery.scrollbar.min.js"></script>
+<script src="assets/vendor/js/jquery-scrollLock.min.js"></script>
+<script src="assets/vendor/js/lavalamp.min.js"></script>
+<script src="assets/vendor/js/select2.min.js"></script>
+<script src="assets/vendor/js/bootstrap-datepicker.min.js"></script>
+<script src="assets/vendor/js/jquery.dataTables.min.js"></script>
+<script src="assets/vendor/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/vendor/js/dataTables.buttons.min.js"></script>
+<script src="assets/vendor/js/buttons.bootstrap4.min.js"></script>
+<script src="assets/vendor/js/buttons.html5.min.js"></script>
+<script src="assets/vendor/js/buttons.flash.min.js"></script>
+<script src="assets/vendor/js/buttons.print.min.js"></script>
+<script src="assets/vendor/js/dataTables.select.min.js"></script>
 <!-- Argon JS -->
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/js/argon.min.js?v=1.0.0"></script>
-<!-- Demo JS - remove this in your project -->
-<script src="https://demos.creative-tim.com/argon-dashboard-pro/assets/js/demo.min.js"></script>
+<script src="assets/vendor/js/argon.min.js"></script>
+<script src="assets/vendor/js/demo.min.js"></script>
 <script type="text/javascript" src="core/handler/endpoints.constant.js"></script>
 <script type="text/javascript" src="compiled/_gen_v.js"></script>
 <script type="text/javascript" src="compiled/_gen_app.js"></script>
-<script>
-    // Facebook Pixel Code Don't Delete
-    ! function(f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function() {
-            n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s)
-    }(window,
-        document, 'script', 'http://connect.facebook.net/en_US/fbevents.js');
-
-    try {
-        fbq('init', '111649226022273');
-        fbq('track', "PageView");
-
-    } catch (err) {
-        console.log('Facebook Track Error:', err);
-    }
-</script>
-<noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />
-</noscript>
 </body>
 </html>
